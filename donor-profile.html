@@ -17,7 +17,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <!-- Profile Header  -->
                 <div class="donor-card d-flex align-items-end justify-content-between">
                     <div class="d-flex align-items-end gap-2">
@@ -69,7 +69,47 @@
                         <p class="text-end col-4 fw-bolder">Last Donation Date</p>
                         <p class="text-start col-7">21-11-2024</p>
                     </div>
-                   
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-details mt-4">
+                    <h5 class="fw-bold text-center">Donation Hisotry</h5>
+                    <div class="donation-history row align-items-center px-3 mt-5">
+                        <p class="text-start col-6">Date</p>
+                        <p class="text-end col-6">Blood Units</p>
+                    </div>
+
+                    <div class="inner-details row align-items-center  px-3">
+                        <p class="text-start col-8">1st Dec 2024</p>
+                        <p class="text-end col-4">120</p>
+                    </div>
+                    <div class="inner-details row align-items-center  px-3">
+                        <p class="text-start col-8">15 July 2024</p>
+                        <p class="text-end col-4">100</p>
+                    </div>
+                </div>
+
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <h6 id="calendarMonth"></h6>
+                        <div>
+                            <button class="btn btn-sm btn-outline-dark" id="prevMonth">&lt;</button>
+                            <button class="btn btn-sm btn-outline-dark" id="nextMonth">&gt;</button>
+                        </div>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Days of the week -->
+                        <div class="fw-bold">Mo</div>
+                        <div class="fw-bold">Tu</div>
+                        <div class="fw-bold">We</div>
+                        <div class="fw-bold">Th</div>
+                        <div class="fw-bold">Fr</div>
+                        <div class="fw-bold">Sa</div>
+                        <div class="fw-bold">Su</div>
+                        <!-- Days will be dynamically generated here -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,6 +118,96 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <script>
+        const calendarMonth = document.getElementById('calendarMonth');
+        const calendarGrid = document.getElementById('calendarGrid');
+        const prevMonthBtn = document.getElementById('prevMonth');
+        const nextMonthBtn = document.getElementById('nextMonth');
+
+        let today = new Date();
+        let currentYear = today.getFullYear();
+        let currentMonth = today.getMonth();
+
+        // Helper: Get number of days in a month
+        function daysInMonth(year, month) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        // Helper: Generate calendar
+        function generateCalendar(year, month) {
+            calendarGrid.innerHTML = `
+                <div class="fw-bold">Mo</div>
+                <div class="fw-bold">Tu</div>
+                <div class="fw-bold">We</div>
+                <div class="fw-bold">Th</div>
+                <div class="fw-bold">Fr</div>
+                <div class="fw-bold">Sa</div>
+                <div class="fw-bold">Su</div>
+              `;
+
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const totalDays = daysInMonth(year, month);
+
+            // Adjust start day for Monday as the first day of the week
+            const adjustedStartDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
+
+            // Add empty days for the first week
+            for (let i = 0; i < adjustedStartDay; i++) {
+                calendarGrid.innerHTML += `<div class="inactive-day"></div>`;
+            }
+
+            // Generate days of the month
+            for (let day = 1; day <= totalDays; day++) {
+                const isToday =
+                    day === today.getDate() &&
+                    year === today.getFullYear() &&
+                    month === today.getMonth();
+
+                calendarGrid.innerHTML += `
+                  <div class="day ${isToday ? 'active-day' : ''}" onclick="selectDay(this)">
+                    ${day}
+                  </div>
+                `;
+            }
+
+            // Update month header
+            const monthNames = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            calendarMonth.textContent = `${monthNames[month]} ${year}`;
+        }
+
+        // Change month
+        prevMonthBtn.addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            generateCalendar(currentYear, currentMonth);
+        });
+
+        nextMonthBtn.addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar(currentYear, currentMonth);
+        });
+
+        // Select a day
+        function selectDay(dayElement) {
+            const activeDay = document.querySelector('.active-day');
+            if (activeDay) activeDay.classList.remove('active-day');
+            dayElement.classList.add('active-day');
+        }
+
+        // Initialize calendar
+        generateCalendar(currentYear, currentMonth);
+    </script>
 
 </body>
 

@@ -186,3 +186,62 @@ a {
 .profile-details .inner-details p {
   padding: 2px 15px;
 }
+
+.donation-history p {
+  color: #47494b9f;
+}
+
+
+/*====================================================
+                    Calendar CSS*
+=====================================================*/
+
+.calendar-container {
+  margin: 50px auto;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h6 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.calendar-grid div {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.day {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.day:hover {
+  background-color: #e2e6ea;
+}
+
+.inactive-day {
+  color: #adb5bd;
+}
+
+.active-day {
+  background-color: var(--color-dark-red);
+  color: #fff;
+}
