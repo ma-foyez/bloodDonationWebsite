@@ -11,6 +11,12 @@
   --color-purple: #4E071C;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  /* overflow-x: hidden; */
+}
+
 ul li {
   list-style-type: none;
   margin: 0;
@@ -18,7 +24,7 @@ ul li {
 
 a {
   text-decoration: none;
-  color: var(--color-light-dark);
+  color: var(--color-white);
 }
 
 
@@ -65,9 +71,247 @@ a {
 
 
 /*====================================================
-                    Footer Section CSS*
+                    Header Navbar Section CSS*
 =====================================================*/
 
+.nav-menu {
+  background-color: transparent !important;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+}
+
+.navbar .navbar-brand {
+  height: 60px;
+  width: 60px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.navbar .navbar-brand img {
+  height: 100%;
+}
+
+.navbar .nav-item .nav-link {
+  font-weight: 600;
+  margin: 0px 20px;
+  color: var(--color-light-dark);
+  border-bottom: 2px solid transparent;
+}
+
+.navbar .nav-item .nav-link.login-btn {
+  border: 1px solid var(--color-light-dark);
+
+}
+
+.navbar .nav-item .nav-link.active {
+  border-color: var(--color-dark-maroon);
+}
+
+
+
+@keyframes scroll-down {
+  from {
+    transform: translate(0, -100%)
+  }
+
+  to {
+    transfrom: translate(0, 0)
+  }
+}
+
+.navfix {
+  position: fixed;
+  top: 0;
+  background-color: var(--color-white) !important;
+  z-index: 99;
+  width: 100%;
+  right: 0;
+  animation-name: scroll-down;
+  animation-duration: 1s;
+}
+
+/*nav section close*/
+
+/*top banner section start*/
+
+.navbar .nav-item .sign-in:hover {
+  background-color: var(--color-white);
+  color: var(--color-light-dark);
+}
+
+/*====================================================
+                    Home Banner Section Section CSS*
+=====================================================*/
+#banner {
+  background-image: url('./../images/banner_img.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+}
+
+.mission-card {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 20px 30px;
+  margin: 50px 0px;
+}
+
+
+.slider-container {
+  max-width: 100%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.slick-slide {
+  outline: none;
+}
+
+.collaborator-card {
+  background: var(--color-white);
+  border-radius: 4px;
+  padding: 50px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #adb5bd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #000;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #000;
+}
+
+
+#get_blood_processing .number {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#get_blood_processing p {
+  font-size: 16px;
+  color: #666;
+}
+
+/*====================================================
+                    Footer Section CSS*
+=====================================================*/
+.footer {
+  background-color: var(--color-light-dark);
+  color: var(--color-white);
+  padding: 50px 5px;
+}
+
+.footer .footer-shape img {
+  width: 40px;
+}
+
+.footer .footer-shape {
+  border-bottom: 1px solid #9490909d;
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer a {
+  color: var(--color-pure-white);
+}
+
+.footer-policy {
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px 10px 10px 10px;
+}
+
+.footer-inner .subscription h6 {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  line-break: normal;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.footer-inner .subscription input {
+  border: 0;
+  border-bottom: 1px solid #FFD2DD;
+  color: var(--color-white);
+  padding: 15px 5px;
+  outline: 0;
+  background-color: transparent;
+  width: 100%;
+}
+
+.footer-inner .subscription .subscription-form {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-inner .subscription .subscription-form button {
+  background-color: #FFD2DD;
+  padding: 10px 15px;
+  border-radius: 50px 50px 0px 0px / 25px 25px 25px 25px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.footer-inner .footer-submenu-title {
+  color: #FFD2DD;
+  font-size: 1.2rem;
+}
+
+.footer-submenu ul {
+  margin-left: -35px;
+}
+
+.footer-submenu ul li a {
+  margin: 5px 0px;
+  display: inline-block;
+  transition: 0.5s all ease;
+}
+
+.footer-policy .terms a {
+  margin: 0px 10px;
+  transition: 0.5s ease;
+}
+
+.footer-policy .footer-social a {
+  margin: 0px 10px;
+  font-size: 1.2rem;
+  transition: 0.5s ease;
+}
+
+.footer-submenu ul li a:hover,
+.footer-policy .terms a:hover,
+.footer-policy .footer-social a:hover {
+  color: var(--color-dark-red);
+}
 
 /*====================================================
                     Find Donor Screen CSS*
@@ -244,4 +488,31 @@ a {
 .active-day {
   background-color: var(--color-dark-red);
   color: #fff;
+}
+
+
+
+/*====================================================
+                    Responsive CSS*
+=====================================================*/
+@media only screen and (max-width: 600px) {
+
+
+  .nav-menu {
+    background-color: var(--color-white) !important;
+  }
+
+  #banner {
+    background-image: none !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center;
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-inner .subscription input {
+    width: 85%;
+  }
 }
