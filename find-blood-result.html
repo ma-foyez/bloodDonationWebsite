@@ -43,7 +43,7 @@
                             reprehenderit obcaecati vitae. Sit labore rem explicabo fugiat.</p>
                     </div>
                     <div class="col-sm-4 text-center">
-                        <button class=" btn btn-success">
+                        <button class=" btn btn-success" data-bs-toggle="modal" data-bs-target="#autoCallClick">
                             <span class="fw-bolder">Auto Call</span>
                             <span class="ms-1"><i class="fa-solid fa-phone"></i></span>
                         </button>
@@ -160,6 +160,21 @@
     </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="autoCallClick" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>
+                        By clicking this, you are going to use the Auto-call feature.
+                        Click ‘Continue’ to proceed
+                    </p>
+                    <button type="button" class="btn btn-dark">Continue</button>
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
